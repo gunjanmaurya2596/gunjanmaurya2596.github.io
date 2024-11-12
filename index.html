@@ -1,63 +1,108 @@
 ﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
-    <title>Gunjan Maurya UI Designer</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Gunjan Maurya UI Designer</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet"/>
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <style>
-        
+        /* Basic page styling */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Typewriter effect */
+        .typewriter {
+            display: inline-block;
+            overflow: hidden;
+            border-right: 4px solid white;
+            white-space: nowrap;
+            animation: typing 3.5s steps(30, end), blink 0.75s step-end infinite;
+            font-size: 2.5em;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        /* Snow effect styling */
+        #snow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            color: white;
+            font-size: 1em;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0.2; }
+        }
     </style>
 </head>
-<body >
-    <form id="form1" >
-        <div class="background">
-            <div class="bg-img"></div>
+<body>
+    <div class="container">
+        <!-- Animated Text -->
+        <div class="message">
+            <h1><span class="typewriter">Web Portfolio Underdevelopment...</span></h1>
         </div>
-      
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="row">
-                            <div class="profile-photo">
-                                <img src="img/profile.png" class="img-fluid" />
-                            </div>
 
-                            <div class="card profile-card">
-                                <div class="card-body " style="margin-top: 80px;">
-                                    <h3 class="text-center text-white">Gunjan Maurya</h3>
-                                    <h6 class="mx-auto text-center" style="width:200px;padding:5px;background-color:#262626;border-radius:5px;">UI Designer</h6>
-                                    <div class="profile-contact" >
-                                        <div><i class="fas fa-mobile-alt    "></i> <div style="display: inline-block;">Phone<br>1234567890</p></div>
-                                        <hr>
-                                        <div><i class="fa fa-envelope-open" aria-hidden="true"></i> <div style="display: inline-block;">Email<br>demo@gmail.com</p></div>
-                                        <hr>
-                                        <div><i class="fas fa-map-marker-alt  " aria-hidden="true"></i> <div style="display: inline-block;">Address<br> Varanasi, Uttar Pradesh</p></div>
-                                        <hr>
-                                        <div><i class="fa fa-map-pin" aria-hidden="true"></i> <div style="display: inline-block;">Pincode<br>221010</p></div>
-                                      
-                                    </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <div class="col-md-8">
-                        <div class="card mt-5">
-                          <div class="card-body">
-                              <div class="col-md-6">
-                                 
-                                  
-                              </div>
-                          </div>
-                      </div>
-                  </div> -->
-                </div>
-            </div>
-      
-    </form>
+        <!-- Snow Effect -->
+        <div id="snow"></div>
+    </div>
+
+    <script>
+        // JavaScript to generate snowflakes
+        const snowContainer = document.getElementById('snow');
+        const snowflakes = 100;
+
+        for (let i = 0; i < snowflakes; i++) {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.innerHTML = '&#10052;';
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
+            snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
+            snowflake.style.opacity = Math.random();
+            snowflake.style.animationDelay = Math.random() * 5 + 's';
+            snowContainer.appendChild(snowflake);
+        }
+    </script>
 </body>
 </html>
+
